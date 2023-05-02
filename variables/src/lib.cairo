@@ -187,15 +187,32 @@
 
 // fn make_copy(some_uinteger: u128) {}
 
+// use array::ArrayTrait;
+
+// fn main() {
+//     let arr1 = ArrayTrait::<u128>::new();
+
+//     let (arr2, len) = calculate_length(arr1);
+// }
+
+// fn calculate_length(arr: Array<u128>) -> (Array<u128>, usize) {
+//     let len = arr.len();
+//     (arr, len)
+// }
+
 use array::ArrayTrait;
+use debug::PrintTrait;
 
 fn main() {
-    let arr1 = ArrayTrait::<u128>::new();
-
-    let (arr2, len) = calculate_length(arr1);
+    let mut arr1 = ArrayTrait::<u128>::new();
+    let first_snapshot = @arr1;
+    arr1.append(1_u128);
+    let first_length = calculate_length(first_snapshot);
+    let second_length = calculate_length(@arr1);
+    first_length.print();
+    second_length.print();
 }
 
-fn calculate_length(arr: Array<u128>) -> (Array<u128>, usize) {
-    let len = arr.len();
-    (arr, len)
+fn calculate_length(arr: @Array<u128>) -> usize {
+    arr.len()
 }
