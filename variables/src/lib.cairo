@@ -1,5 +1,5 @@
-use core::debug::PrintTrait;
-use core::clone::Clone;
+// use core::debug::PrintTrait;
+// use core::clone::Clone;
 // use core::traits::TryInto;
 
 // const ONE_HOUR_IN_SECOND:u32 = 3600_u32;
@@ -127,23 +127,45 @@ use core::clone::Clone;
 //     // 100
 // }
 
-use array::ArrayTrait;
-use traits::Into;
+// use array::ArrayTrait;
+// use traits::Into;
 
-#[derive(Copy, Drop)]
-enum Data{
-    Integer: u128,
-    Felt: felt252,
-    Tuple: (u32, u32)
-}
+// #[derive(Copy, Drop)]
+// enum Data{
+//     Integer: u128,
+//     Felt: felt252,
+//     Tuple: (u32, u32)
+// }
 
-fn main() {
-    let mut message:Array<Data> = ArrayTrait::new();
-    message.append(Data::Integer(100_u128));
-    message.append(Data::Integer(20_u128));
-    message.append(Data::Felt('Hello World!'));
-    message.append(Data::Tuple((1_u32, 3_u32)));
-    message.len().print();
+// fn main() {
+//     let mut message:Array<Data> = ArrayTrait::new();
+//     message.append(Data::Integer(100_u128));
+//     message.append(Data::Integer(20_u128));
+//     message.append(Data::Felt('Hello World!'));
+//     message.append(Data::Tuple((1_u32, 3_u32)));
+//     message.len().print();
 
-    let span = message.span();
-}
+//     let span = message.span();
+// }
+
+// use dict::Felt252DictTrait;
+
+// #[derive(Destruct)]
+// struct A {
+//     dict: Felt252Dict<u128>
+// }
+
+// fn main() {
+//     A {
+//         dict: Felt252DictTrait::new()
+//     };
+// }
+
+// use array::ArrayTrait;
+// use clone::Clone;
+// use array::ArrayTCloneImpl;
+
+// fn main() {
+//     let arr1 = ArrayTrait::<u128>::new();
+//     let arr2 = arr1.clone();
+// }
