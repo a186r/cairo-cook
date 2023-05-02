@@ -235,23 +235,43 @@
 //     *rec.height * *rec.width
 // }
 
+// use debug::PrintTrait;
+
+// #[derive(Copy, Drop)]
+// struct Rectangle{
+//     height: u64,
+//     width: u64
+// }
+
+// fn main() {
+//     let mut rec = Rectangle{height: 3_u64, width: 10_u64};
+//     flip(ref rec);
+//     rec.height.print();
+//     rec.width.print();
+// }
+
+// fn flip(ref rec: Rectangle) {
+//     let temp = rec.height;
+//     rec.height = rec.width;
+//     rec.width = temp;
+// }
+
 use debug::PrintTrait;
 
 #[derive(Copy, Drop)]
-struct Rectangle{
-    height: u64,
-    width: u64
+struct Rectangle {
+    width: u64,
+    height: u64
 }
 
 fn main() {
-    let mut rec = Rectangle{height: 3_u64, width: 10_u64};
-    flip(ref rec);
-    rec.height.print();
-    rec.width.print();
+    let rec = Rectangle{width: 10_u64, height: 3_u64};
+    rec.print();
 }
 
-fn flip(ref rec: Rectangle) {
-    let temp = rec.height;
-    rec.height = rec.width;
-    rec.width = temp;
+impl RectanglePrintImpl of PrintTrait<Rectangle> {
+    fn print(self: Rectangle) {
+        self.width.print();
+        self.height.print();
+    }
 }
