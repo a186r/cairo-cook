@@ -170,19 +170,32 @@
 //     let arr2 = arr1.clone();
 // }
 
-#[derive(Drop)]
-struct MyStruct{}
+// #[derive(Drop)]
+// struct MyStruct{}
+
+// fn main() {
+//     let my_struct = MyStruct{};
+
+//     takes_ownership(my_struct);
+
+//     let x = 5_u128;
+
+//     make_copy(x);
+// }
+
+// fn takes_ownership(some_struct: MyStruct) {}
+
+// fn make_copy(some_uinteger: u128) {}
+
+use array::ArrayTrait;
 
 fn main() {
-    let my_struct = MyStruct{};
+    let arr1 = ArrayTrait::<u128>::new();
 
-    takes_ownership(my_struct);
-
-    let x = 5_u128;
-
-    make_copy(x);
+    let (arr2, len) = calculate_length(arr1);
 }
 
-fn takes_ownership(some_struct: MyStruct) {}
-
-fn make_copy(some_uinteger: u128) {}
+fn calculate_length(arr: Array<u128>) -> (Array<u128>, usize) {
+    let len = arr.len();
+    (arr, len)
+}
