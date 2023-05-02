@@ -200,19 +200,37 @@
 //     (arr, len)
 // }
 
-use array::ArrayTrait;
+// use array::ArrayTrait;
+// use debug::PrintTrait;
+
+// fn main() {
+//     let mut arr1 = ArrayTrait::<u128>::new();
+//     let first_snapshot = @arr1;
+//     arr1.append(1_u128);
+//     let first_length = calculate_length(first_snapshot);
+//     let second_length = calculate_length(@arr1);
+//     first_length.print();
+//     second_length.print();
+// }
+
+// fn calculate_length(arr: @Array<u128>) -> usize {
+//     arr.len()
+// }
+
 use debug::PrintTrait;
 
-fn main() {
-    let mut arr1 = ArrayTrait::<u128>::new();
-    let first_snapshot = @arr1;
-    arr1.append(1_u128);
-    let first_length = calculate_length(first_snapshot);
-    let second_length = calculate_length(@arr1);
-    first_length.print();
-    second_length.print();
+#[derive(Copy, Drop)]
+struct Rectangle {
+    height: u64,
+    width: u64
 }
 
-fn calculate_length(arr: @Array<u128>) -> usize {
-    arr.len()
+fn main() {
+    let rec = Rectangle{height: 3_u64, width: 10_u64};
+    let area = calculate_length(@rec);
+    area.print();
+}
+
+fn calculate_length(rec: @Rectangle) -> u64 {
+    *rec.height * *rec.width
 }
