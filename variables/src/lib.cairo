@@ -169,3 +169,20 @@
 //     let arr1 = ArrayTrait::<u128>::new();
 //     let arr2 = arr1.clone();
 // }
+
+#[derive(Drop)]
+struct MyStruct{}
+
+fn main() {
+    let my_struct = MyStruct{};
+
+    takes_ownership(my_struct);
+
+    let x = 5_u128;
+
+    make_copy(x);
+}
+
+fn takes_ownership(some_struct: MyStruct) {}
+
+fn make_copy(some_uinteger: u128) {}
