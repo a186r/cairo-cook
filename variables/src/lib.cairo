@@ -217,20 +217,41 @@
 //     arr.len()
 // }
 
+// use debug::PrintTrait;
+
+// #[derive(Copy, Drop)]
+// struct Rectangle {
+//     height: u64,
+//     width: u64
+// }
+
+// fn main() {
+//     let rec = Rectangle{height: 3_u64, width: 10_u64};
+//     let area = calculate_length(@rec);
+//     area.print();
+// }
+
+// fn calculate_length(rec: @Rectangle) -> u64 {
+//     *rec.height * *rec.width
+// }
+
 use debug::PrintTrait;
 
 #[derive(Copy, Drop)]
-struct Rectangle {
+struct Rectangle{
     height: u64,
     width: u64
 }
 
 fn main() {
-    let rec = Rectangle{height: 3_u64, width: 10_u64};
-    let area = calculate_length(@rec);
-    area.print();
+    let mut rec = Rectangle{height: 3_u64, width: 10_u64};
+    flip(ref rec);
+    rec.height.print();
+    rec.width.print();
 }
 
-fn calculate_length(rec: @Rectangle) -> u64 {
-    *rec.height * *rec.width
+fn flip(ref rec: Rectangle) {
+    let temp = rec.height;
+    rec.height = rec.width;
+    rec.width = temp;
 }
